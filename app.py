@@ -327,8 +327,8 @@ def page_results():
                     ('noise_test_compare.png', 'Noise test, before and after noise training'),
                     ('confusion_unseen_load.png', 'Confusion matrix, unseen loads'),
                     ('ims2_health_clean.png', 'IMS health curve')]:
-        p = os.path.join(HERE, 'assets', fn)
-        if os.path.exists(p): st.image(p, caption=cap); shown = True
+        p = next((q for q in (os.path.join(HERE, 'assets', fn), os.path.join(HERE, fn)) if os.path.exists(q)), '')
+        if p: st.image(p, caption=cap); shown = True
     if not shown: st.caption('Add your saved plots to an assets folder next to app.py and they appear here.')
 
 
